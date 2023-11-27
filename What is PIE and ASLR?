@@ -18,3 +18,14 @@ So, by default every app is PIE ASLR Enabled and compiled.
 
 Source for PIE:-
 https://developer.apple.com/library/archive/qa/qa1788/_index.html
+
+Verifying that your application was built as PIE
+You can check whether your application is PIE by running otool -hv on your executable in the Terminal. Your application is PIE if its header contains the PIE flag. Listing 1 shows an example of how to do this for an iOS app.
+
+ Example of a PIE application
+
+ $ otool -hv /path/to/MyApp.app/MyApp
+MyApp:
+Mach header
+magic   cputype cpusubtype caps filetype  ncmds  sizeofcmds   flags
+MH_MAGIC  ARM    V7        0x00  EXECUTE    23        2372     NOUNDEFS DYLDLINK TWOLEVEL PIE
